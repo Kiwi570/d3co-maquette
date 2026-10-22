@@ -648,7 +648,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 /* ---------- pied de page ---------- */
 .pied { background: var(--graphite); color: var(--os); padding-top: clamp(64px, 9vw, 120px); padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 28px); overflow: hidden; }
 .pied__haut { display: grid; grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
-.pied h4 { font-family: var(--f-mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muet-sombre); font-weight: 500; margin-bottom: 14px; }
+.pied h4, .pied__titre { margin: 0 0 14px; font-family: var(--f-mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muet-sombre); font-weight: 500; margin-bottom: 14px; }
 .pied ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .pied a { text-decoration: none; }
 .pied a:hover { color: var(--orange); }

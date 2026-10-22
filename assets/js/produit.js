@@ -59,7 +59,7 @@ function rendreFiche(premier = false) {
   /* couleurs */
   $('[data-nom-couleur]').textContent = c ? nomCouleur(c) : t('aCompleter');
   $('[data-nuancier]').innerHTML = f.couleurs.map((x) => `<button class="nuance" type="button" style="background:${fondNuance(x)}" data-couleur="${x.slug}" aria-pressed="${c && x.slug === c.slug}" aria-label="${nomCouleur(x)}"></button>`).join('') || `<span class="muet">${t('aCompleter')}</span>`;
-  $('[data-vignettes]').innerHTML = f.couleurs.map((x) => `<button class="vignette" type="button" data-couleur="${x.slug}" aria-pressed="${c && x.slug === c.slug}" aria-label="${nomCouleur(x)}"><img src="${x.img(600)}" alt="" loading="lazy"></button>`).join('');
+  $('[data-vignettes]').innerHTML = f.couleurs.map((x) => `<button class="vignette" type="button" data-couleur="${x.slug}" aria-pressed="${c && x.slug === c.slug}" aria-label="${nomCouleur(x)}"><img src="${x.img(240)}" alt="" loading="lazy" width="240" height="240"></button>`).join('');
   /* tailles */
   const tailles = f.tailles;
   $('[data-taille-note]').textContent = f.noteTailles ? t('autresTailles') : '';
@@ -72,7 +72,8 @@ function rendreFiche(premier = false) {
   $('[data-q-val]').textContent = qte;
   $('[data-barre-nom]').textContent = `${P.nom}${c ? ' · ' + nomCouleur(c) : ''}`;
   $('[data-barre-prix]').textContent = prix(f.prix * qte);
-  livraison();
+  $('[data-livraison]').hidden = !!P.aCompleter;
+  if (!P.aCompleter) livraison();
   accordeons();
   plan(!premier);
   chezVous();

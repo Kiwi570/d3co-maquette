@@ -1,7 +1,7 @@
 /* Page d'accueil D3CO */
 import {
   init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, langue, onLangue, estCalme, estTactile,
-  ajouterAuPanier, allerA, stock, magnetiques, totaux, toast,
+  ajouterAuPanier, allerA, stock, magnetiques, totaux, toast, lenis,
 } from './core.js';
 import { PRODUITS, HEROS, SAISON, SITE, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js';
 import { FORMES } from './formes.js';
@@ -77,19 +77,26 @@ function heros() {
     <line class="fine" x1="${x1 - 20}" y1="${yB}" x2="${xc + 12}" y2="${yB}"/>
     <line data-c="h" x1="${xc}" y1="${yT}" x2="${xc}" y2="${yB}"/>
     <path d="M${xc - 7} ${yT + 12} L${xc} ${yT} L${xc + 7} ${yT + 12} M${xc - 7} ${yB - 12} L${xc} ${yB} L${xc + 7} ${yB - 12}"/>
-    <rect class="fond-texte" x="${xc - 40}" y="${(yT + yB) / 2 - 16}" width="80" height="30"/>
-    <text x="${xc}" y="${(yT + yB) / 2 + 5}" text-anchor="middle" data-cote-h>H 25</text>
+    <rect class="fond-texte" x="${xc - 46}" y="${(yT + yB) / 2 - 20}" width="92" height="40"/>
+    <text x="${xc}" y="${(yT + yB) / 2 + 8}" text-anchor="middle" data-cote-h>H 25</text>
     <line class="fine" x1="${x0}" y1="${yB - 40}" x2="${x0}" y2="${yc + 12}"/>
     <line class="fine" x1="${x1}" y1="${yB - 40}" x2="${x1}" y2="${yc + 12}"/>
     <line data-c="d" x1="${x0}" y1="${yc}" x2="${x1}" y2="${yc}"/>
     <path d="M${x0 + 12} ${yc - 7} L${x0} ${yc} L${x0 + 12} ${yc + 7} M${x1 - 12} ${yc - 7} L${x1} ${yc} L${x1 - 12} ${yc + 7}"/>
-    <rect class="fond-texte" x="${(x0 + x1) / 2 - 62}" y="${yc - 16}" width="124" height="30"/>
-    <text x="${(x0 + x1) / 2}" y="${yc + 5}" text-anchor="middle" data-cote-d>Ø 18,2 cm</text>`;
+    <rect class="fond-texte" x="${(x0 + x1) / 2 - 84}" y="${yc - 20}" width="168" height="40"/>
+    <text x="${(x0 + x1) / 2}" y="${yc + 8}" text-anchor="middle" data-cote-d>Ø 18,2 cm</text>`;
   const ecrire = (h, d) => {
     svg.querySelector('[data-cote-h]').textContent = `H ${cm(Math.round(h))}`;
     svg.querySelector('[data-cote-d]').textContent = `Ø ${cm(d.toFixed(1))} cm`;
   };
   onLangue(() => ecrire(25, 18.2));
+  /* le curseur annonce « Imprimer » : un clic relance l'impression */
+  const relancer = () => {
+    if (!impressionHeros || estCalme() || gsap.isTweening(impressionHeros.etat)) return;
+    impressionHeros.imprimer({ duree: 2.2, ease: 'power1.inOut' });
+  };
+  scene.addEventListener('click', relancer);
+  scene.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); relancer(); } });
 
   return () => {
     const tl = gsap.timeline();
@@ -165,12 +172,31 @@ const ORDRE = ['linea', 'flow', 'twist', 'paper', 'concrete', 'dia', 'solo', 'fl
 function collection() {
   const section = document.querySelector('[data-collection]');
   const piste = section.querySelector('[data-collection-piste]');
+  const fen = section.querySelector('[data-collection-fenetre]');
+  const intro = section.querySelector('.entete-section');
+  const place = { parent: intro.parentNode, suivant: intro.nextSibling };
+  const compteur = section.querySelector('[data-coll-compteur]');
+  const barre = section.querySelector('[data-coll-barre]');
+  const aide = section.querySelector('[data-coll-aide]');
+  const N = ORDRE.length;
+  const majProgres = (p) => {
+    const k = Math.min(N, Math.max(1, Math.round(p * (N - 1)) + 1));
+    compteur.textContent = `${String(k).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
+    barre.style.transform = `scaleX(${Math.max(1 / N, Math.min(1, p)).toFixed(3)})`;
+  };
+  const carteCTA = () => `<article class="modele modele--cta"><span class="grand" aria-hidden="true">${N}</span>
+    <div class="pile-s"><h3 class="titre-l">${t('coll.cta.t')}</h3><p>${t('coll.cta.p')}</p></div>
+    <a class="btn btn--orange" href="boutique.html" data-magnet><span>${t('coll.cta.b')}</span><svg class="fleche" aria-hidden="true"><use href="#i-fleche"/></svg></a></article>`;
   const rendre = () => {
-    piste.innerHTML = ORDRE.map((s) => carteCollection(produit(s))).join('');
+    piste.querySelectorAll('.modele').forEach((m) => m.remove());
+    piste.insertAdjacentHTML('beforeend', ORDRE.map((s) => carteCollection(produit(s))).join('') + carteCTA());
     magnetiques(piste);
   };
+  const tactile = window.matchMedia('(max-width: 900px)');
+  const texteAide = () => { if (tactile.matches || estCalme()) aide.textContent = t('coll.aide.tactile'); };
   rendre();
-  onLangue(() => { rendre(); piste.querySelectorAll('.modele').forEach(revelerCarteSansAnim); });
+  texteAide();
+  onLangue(() => { rendre(); piste.querySelectorAll('.modele').forEach(revelerCarteSansAnim); texteAide(); });
 
   piste.addEventListener('click', (e) => {
     const b = e.target.closest('[data-ajout-rapide]');
@@ -186,14 +212,26 @@ function collection() {
     const s = e.target.closest('.modele__scene');
     if (s && !s.contains(e.relatedTarget)) gsap.to(s.querySelector('.modele__img--2'), { opacity: 0, duration: 0.5 });
   });
+  /* défilement natif (téléphone, tablette, mode calme) : le compteur suit */
+  fen.addEventListener('scroll', () => {
+    const max = fen.scrollWidth - fen.clientWidth;
+    if (max > 0) majProgres(fen.scrollLeft / max);
+  }, { passive: true });
 
   if (estCalme()) { section.classList.add('sans-epingle'); return; }
 
   mm.add(grandEcran, () => {
+    section.classList.add('est-epinglee');
+    intro.classList.remove('wrap');
+    intro.classList.add('collection__intro');
+    piste.prepend(intro);
     const distance = () => piste.scrollWidth - window.innerWidth;
     const tw = gsap.to(piste, {
       x: () => -distance(), ease: 'none',
-      scrollTrigger: { trigger: section, start: 'top top', end: () => `+=${distance()}`, scrub: 0.8, pin: true, invalidateOnRefresh: true, anticipatePin: 1 },
+      scrollTrigger: {
+        trigger: section, start: 'top top', end: () => `+=${distance()}`, scrub: 0.8, pin: true, invalidateOnRefresh: true, anticipatePin: 1,
+        onUpdate: (self) => majProgres(self.progress),
+      },
     });
     piste.querySelectorAll('.modele').forEach((carte) => {
       preparerCarte(carte);
@@ -202,11 +240,28 @@ function collection() {
         onEnter: () => revelerCarte(carte),
       });
     });
-    return () => section.classList.remove('sans-epingle');
+    /* au clavier, la carte qui reçoit le focus est amenée à l'écran */
+    const surFocus = (e) => {
+      const carte = e.target.closest('.modele');
+      const st = tw.scrollTrigger;
+      if (!carte || !st) return;
+      const gauche = carte.getBoundingClientRect().left - piste.getBoundingClientRect().left;
+      const k = Math.min(1, Math.max(0, (gauche - window.innerWidth * 0.25) / Math.max(1, distance())));
+      const y = st.start + (st.end - st.start) * k;
+      if (lenis) lenis.scrollTo(y, { immediate: true }); else window.scrollTo(0, y);
+    };
+    piste.addEventListener('focusin', surFocus);
+    return () => {
+      piste.removeEventListener('focusin', surFocus);
+      section.classList.remove('est-epinglee');
+      intro.classList.remove('collection__intro');
+      intro.classList.add('wrap');
+      place.parent.insertBefore(intro, place.suivant);
+    };
   });
   mm.add('(max-width: 900px)', () => {
     section.classList.add('sans-epingle');
-    const fen = section.querySelector('[data-collection-fenetre]');
+    texteAide();
     const io = new IntersectionObserver((entrees) => entrees.forEach((en) => {
       if (en.isIntersecting) { revelerCarte(en.target); io.unobserve(en.target); }
     }), { root: fen, threshold: 0.4 });
@@ -291,7 +346,7 @@ function fabrication() {
     for (let i = 0; i < Math.min(n, N); i++) {
       const c = C[i];
       const age = actu - i;
-      const chaud = Math.max(0, 1 - age / 14);
+      const chaud = p >= 1 ? 0 : Math.max(0, 1 - age / 14);
       const r = Math.round(200 + 55 * chaud); const gg = Math.round(195 - 105 * chaud); const b = Math.round(185 - 154 * chaud);
       g.fillStyle = `rgb(${r},${gg},${b})`;
       g.fillRect(ox + c.x0 * sc, oy + c.y * sc - ep / 2, (c.x1 - c.x0) * sc, ep);
@@ -326,13 +381,16 @@ function fabrication() {
   };
   if (estCalme()) { activer(1); return; }
   mm.add(grandEcran, () => {
+    const etapesEl = document.querySelector('[data-etapes]');
+    const pin = ScrollTrigger.create({
+      trigger: '.process__grid', start: 'top 14%', end: () => `+=${Math.max(900, etapesEl.offsetHeight * 1.6)}`,
+      pin: true, pinSpacing: true, anticipatePin: 1,
+      onUpdate: (self) => activer(self.progress),
+    });
+    /* l'impression commence dès que la scène entre à l'écran, avant l'épinglage */
     gsap.to(etat, {
       p: 1, ease: 'none',
-      scrollTrigger: {
-        trigger: '.process__grid', start: 'top 14%', end: () => `+=${Math.max(900, document.querySelector('[data-etapes]').offsetHeight * 1.6)}`,
-        scrub: 0.5, pin: true, pinSpacing: true, anticipatePin: 1,
-        onUpdate: (self) => activer(self.progress),
-      },
+      scrollTrigger: { trigger: '.process__grid', start: 'top 85%', end: () => pin.end, scrub: 0.5 },
       onUpdate: () => dessiner(etat.p),
     });
   });
@@ -402,6 +460,11 @@ function couleurs() {
     rendreOnglets();
     appliquer();
   });
+  nuancier.addEventListener('pointerover', (e) => {
+    const b = e.target.closest('[data-nuance]');
+    if (b) nomEl.textContent = b.getAttribute('aria-label');
+  });
+  nuancier.addEventListener('pointerleave', () => majTextes());
   nuancier.addEventListener('click', (e) => {
     const b = e.target.closest('[data-nuance]');
     if (!b) return;
@@ -462,7 +525,7 @@ function ensemble() {
     liste.innerHTML = CHOIX_ENSEMBLE.map(([s, f, c], i) => {
       const p = produit(s);
       const cc = couleur(p, c, f).c;
-      return `<button class="choix__btn" type="button" data-choix="${i}" aria-pressed="${selection.includes(i)}" aria-label="${t('choisir', { nom: `${p.nom} ${nomCouleur(cc).toLowerCase()}` })}"><img src="${cc.img(600)}" alt="" loading="lazy"><span class="choix__nom">${p.nom}</span></button>`;
+      return `<button class="choix__btn" type="button" data-choix="${i}" aria-pressed="${selection.includes(i)}" aria-label="${t('choisir', { nom: `${p.nom} ${nomCouleur(cc).toLowerCase()}` })}"><img src="${cc.img(240)}" alt="" loading="lazy" width="240" height="240"><span class="choix__nom">${p.nom}</span></button>`;
     }).join('');
   };
   const placer = (el, i, n) => {

@@ -139,6 +139,7 @@ function entete() {
     const menuOuvert = !document.getElementById('menu-mobile')?.hidden;
     e.classList.toggle('est-cache', y > 400 && y > dernier + 4 && !menuOuvert && !document.body.classList.contains('panier-ouvert'));
     if (y < dernier - 4) e.classList.remove('est-cache');
+    html.classList.toggle('entete-cachee', e.classList.contains('est-cache'));
     dernier = y;
   };
   window.addEventListener('scroll', maj, { passive: true });
@@ -171,11 +172,14 @@ function ouvrirMenu() {
     gsap.from(m.querySelectorAll('nav a'), { yPercent: 110, opacity: 0, duration: 0.8, ease: 'expo.out', stagger: 0.06, delay: 0.15 });
   }
   m.querySelector('[data-fermer-menu]')?.focus();
+  pieger(m);
 }
 function fermerMenu() {
   const m = document.getElementById('menu-mobile');
   if (!m || m.hidden) return;
   m.hidden = true;
+  liberer(m);
+  document.querySelector('[data-ouvrir-menu]')?.focus();
   document.querySelector('[data-ouvrir-menu]')?.setAttribute('aria-expanded', 'false');
   lenis?.start();
 }
@@ -254,6 +258,14 @@ function parallaxes() {
       scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true },
     });
   });
+  document.querySelectorAll('[data-reveler]').forEach((fig) => {
+    if (fig.getBoundingClientRect().top < window.innerHeight) return;
+    gsap.set(fig, { clipPath: 'inset(100% 0% 0% 0%)' });
+    ScrollTrigger.create({
+      trigger: fig, start: 'top 88%', once: true,
+      onEnter: () => gsap.to(fig, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'steps(22)', clearProps: 'clipPath' }),
+    });
+  });
   document.querySelectorAll('[data-trace]').forEach((svg) => {
     gsap.from(svg.querySelectorAll('path'), {
       drawSVG: 0, duration: 1.6, ease: 'power2.inOut', stagger: 0.18,
@@ -279,15 +291,46 @@ function copier() {
 }
 
 /* ---------- toasts ---------- */
-export function toast(msg) {
+export function toast(msg, action = null) {
   const zone = document.querySelector('[data-toasts]');
   if (!zone) return;
   const el = document.createElement('div');
   el.className = 'toast';
-  el.textContent = msg;
+  const txt = document.createElement('span');
+  txt.textContent = msg;
+  el.append(txt);
+  if (action) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'toast__action';
+    b.textContent = action.label;
+    b.addEventListener('click', () => { action.fn(); el.remove(); });
+    el.append(b);
+  }
   zone.append(el);
   gsap.fromTo(el, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'expo.out' });
-  gsap.to(el, { y: 10, opacity: 0, duration: 0.3, delay: 2.6, onComplete: () => el.remove() });
+  gsap.to(el, { y: 10, opacity: 0, duration: 0.3, delay: action ? 4 : 2.6, onComplete: () => el.remove() });
+}
+
+/* ---------- piège à focus pour tiroir, modale et menu ---------- */
+const pieges = new Map();
+function pieger(conteneur) {
+  const fn = (e) => {
+    if (e.key !== 'Tab') return;
+    const f = [...conteneur.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])')].filter((x) => x.offsetParent !== null);
+    if (!f.length) return;
+    const premier = f[0]; const dernier = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === premier) { e.preventDefault(); dernier.focus(); }
+    else if (!e.shiftKey && document.activeElement === dernier) { e.preventDefault(); premier.focus(); }
+    else if (!conteneur.contains(document.activeElement)) { e.preventDefault(); premier.focus(); }
+  };
+  document.addEventListener('keydown', fn);
+  pieges.set(conteneur, fn);
+}
+function liberer(conteneur) {
+  const fn = pieges.get(conteneur);
+  if (fn) document.removeEventListener('keydown', fn);
+  pieges.delete(conteneur);
 }
 
 /* ---------- panier ---------- */
@@ -332,7 +375,7 @@ export function ajouterAuPanier({ slug, fin, couleur: c, taille, qte = 1 }, sour
   sauver();
   const badge = document.querySelector('[data-compte]');
   if (badge && !estCalme()) gsap.fromTo(badge, { scale: 1.6 }, { scale: 1, duration: 0.7, ease: 'elastic.out(1, 0.4)', delay: source ? 0.75 : 0 });
-  if (!silencieux) toast(t('ajoute', { nom: `${p.nom}${c ? ' · ' + nomCouleur(couleur(p, c, f.id).c) : ''}` }));
+  if (!silencieux) toast(t('ajoute', { nom: `${p.nom}${c ? ' · ' + nomCouleur(couleur(p, c, f.id).c) : ''}` }), { label: t('voirPanier'), fn: ouvrirPanier });
 }
 
 export function imageLigne(l, s = 600) {
@@ -344,7 +387,7 @@ export function imageLigne(l, s = 600) {
 /* vol vers le panier, l'arc se trace en pointillés orange */
 function voler(source, p, f, slugC) {
   const cible = document.querySelector('[data-ouvrir-panier]');
-  const imgSrc = couleur(p, slugC, f.id).c?.img(600);
+  const imgSrc = couleur(p, slugC, f.id).c?.img(240);
   if (!cible || !imgSrc || estCalme()) return;
   const a = source.getBoundingClientRect();
   const b = cible.getBoundingClientRect();
@@ -390,7 +433,7 @@ function rendrePanier() {
     const { unitaire, estime } = lignePrix(l);
     const finTxt = p.finitions.length > 1 ? `${t(f.id)} · ` : '';
     return `<div class="ligne-panier">
-      ${c ? `<img src="${c.img(600)}" alt="">` : '<span class="ph" style="width:76px;height:76px"></span>'}
+      ${c ? `<img src="${c.img(240)}" alt="" width="76" height="76">` : '<span class="ph" style="width:76px;height:76px"></span>'}
       <div>
         <div class="ligne-panier__nom">${p.nom}</div>
         <div class="ligne-panier__det">${finTxt}${nomCouleur(c) || t('aCompleter')} · ${libelleTaille(p, f, l.taille)}</div>
@@ -446,6 +489,7 @@ export function ouvrirPanier() {
   document.body.classList.add('panier-ouvert');
   lenis?.stop();
   tr.querySelector('[data-fermer-panier]').focus();
+  pieger(tr);
   if (!estCalme()) gsap.from(tr.querySelectorAll('.ligne-panier'), { x: 40, opacity: 0, duration: 0.6, ease: 'expo.out', stagger: 0.05, delay: 0.15 });
 }
 export function fermerPanier() {
@@ -456,6 +500,7 @@ export function fermerPanier() {
   document.querySelector('[data-voile]').classList.remove('est-visible');
   document.body.classList.remove('panier-ouvert');
   lenis?.start();
+  liberer(tr);
   focusAvant?.focus?.();
 }
 
@@ -467,11 +512,13 @@ function ouvrirModale(htmlContenu) {
   lenis?.stop();
   if (!estCalme()) gsap.fromTo(m.querySelector('.modale__boite'), { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out' });
   m.querySelector('input, button:not(.fermer)')?.focus();
+  pieger(m);
 }
 function fermerModale() {
   const m = document.getElementById('modale');
   if (!m || m.hidden) return;
   m.hidden = true;
+  liberer(m);
   lenis?.start();
 }
 function recap() {

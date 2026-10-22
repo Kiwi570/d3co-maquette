@@ -24,6 +24,9 @@ export const DE = {
   'heros.modele': 'Modell <b>Linea</b>',
   'heros.prix': 'ab CHF 19.90',
   'heros.alt': 'Linea, 3D-gedruckte Vase in Nachtblau',
+  'heros.defiler': 'Scrollen',
+  'heros.relancer': 'Druck der Vase neu starten',
+  'coll.aide': 'Scrollen Sie, um die Kollektion zu entdecken',
 
   'bandeau.1': 'Gratisversand ab CHF 100',
   'bandeau.2': 'Zahlung mit Karte oder TWINT',
@@ -37,7 +40,7 @@ export const DE = {
 
   'fab.eyebrow': 'Herstellung',
   'fab.titre': 'Von der Spule in Ihr Regal.',
-  'fab.texte': 'Jedes Stück wird auf Bestellung in unserem Atelier gedruckt. So entsteht es.',
+  'fab.texte': 'Jedes Stück wird in unserem Atelier in Biel gedruckt. So kommt es von Ihrer Auswahl bis zu Ihnen nach Hause.',
   'fab.illustratif': 'ILLUSTRATIV',
   'fab.e1.t': 'Sie wählen Modell und Grösse',
   'fab.e1.p': 'Vase, Übertopf oder Fruchtschale, je nach Modell in einer oder mehreren Grössen.',
@@ -91,7 +94,7 @@ export const DE = {
 
   'at.eyebrow': 'Das Atelier',
   'at.titre': 'Gedruckt in Biel, geliefert in die ganze Schweiz.',
-  'at.texte': 'Die Bestellungen verlassen unser Atelier an der Florastrasse und kommen in 2 bis 5 Werktagen an, überall in der Schweiz.',
+  'at.texte': 'Lieferung in die ganze Schweiz in 2 bis 5 Werktagen. Gratis ab einem Bestellwert von CHF 100.',
   'at.carte': 'Schweizer Karte: Lieferungen ab Biel',
   'at.legende': 'Lieferung nur in der Schweiz · 2 bis 5 Werktage · Linien illustrativ',
   'at.citation': 'Ich komme aus der Technik und bin gelernter Automatiker. Zuerst habe ich den 3D-Druck genutzt, um praktische Teile herzustellen. Schnell wurde daraus eine Leidenschaft: diese Technologie in ein kreatives Werkzeug zu verwandeln.',
@@ -104,7 +107,7 @@ export const DE = {
 
   'mes.eyebrow': 'Nach Mass',
   'mes.titre': 'Eine Idee? Wir drucken sie.',
-  'mes.texte': 'Dekoobjekt oder technisches Teil: Beschreiben Sie Ihr Projekt, D3CO meldet sich mit einem Vorschlag.',
+  'mes.texte': 'Dekoobjekt oder technisches Teil: Beschreiben Sie Ihr Projekt in drei Schritten, D3CO antwortet Ihnen.',
   'mes.alt': 'Bleistiftskizze auf Transparentpapier, Messschieber und Lineal',
   'mes.type': 'Art des Projekts',
   'mes.type.deco': 'Dekoobjekt',
@@ -144,12 +147,18 @@ export const DE = {
   'cat.vases': 'Vasen',
   'cat.bac': 'Fruchtschale',
 
+  'err.eyebrow': 'Fehler 404',
+  'err.titre': 'Diese Seite wurde noch nicht gedruckt.',
+  'err.texte': 'Die Adresse ist vielleicht unvollständig. Zur Kollektion geht es über die Startseite oder den Shop.',
+  'err.accueil': 'Zur Startseite',
+  'err.boutique': 'Zum Shop',
+
   /* boutique */
   'bou.eyebrow': 'Shop',
   'bou.titre': 'Shop',
   'bou.texte': 'Acht Modelle, in Biel gedruckt. Filtern Sie nach Kategorie oder Grösse.',
   'bou.r1.t': 'Gedruckt in Biel',
-  'bou.r1.p': 'Atelier an der Florastrasse',
+  'bou.r1.p': 'Lokale Herstellung',
   'bou.r2.t': 'Lieferung in 2 bis 5 Werktagen',
   'bou.r2.p': 'Gratis ab CHF 100',
   'bou.r3.t': 'Karte oder TWINT',
@@ -195,6 +204,11 @@ export const DE = {
 export const T = {
   'general.fermer': { fr: 'Fermer', de: 'Schliessen' },
   'bou.f.tout': { fr: 'Tout', de: 'Alle' },
+  'coll.aide.tactile': { fr: 'Glissez pour parcourir les 8 modèles', de: 'Wischen Sie durch die 8 Modelle' },
+  'coll.cta.t': { fr: 'Toute la collection', de: 'Die ganze Kollektion' },
+  'coll.cta.p': { fr: 'Filtrez les 8 modèles par catégorie ou par taille dans la boutique.', de: 'Filtern Sie die 8 Modelle im Shop nach Kategorie oder Grösse.' },
+  'coll.cta.b': { fr: 'Ouvrir la boutique', de: 'Shop öffnen' },
+  voirPanier: { fr: 'Voir le panier', de: 'Warenkorb' },
   'mat.aide.tactile': { fr: 'Glissez le doigt : la buse dépose son filament', de: 'Mit dem Finger wischen: Die Düse legt ihr Filament ab' },
   'pro.finition': { fr: 'Finition', de: 'Ausführung' },
   'pro.acc.dim': { fr: 'Dimensions', de: 'Masse' },

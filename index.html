@@ -6,9 +6,14 @@
 <title>D3CO Couche par couche</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="D3CO : vases, cache-pots et bac à fruits imprimés en 3D en PLA dans notre atelier à Bienne. Livraison en Suisse, offerte dès 100 CHF.">
+<meta property="og:type" content="website">
 <meta property="og:title" content="D3CO · Imprimé à Bienne, couche par couche">
 <meta property="og:description" content="Vases, cache-pots et bac à fruits imprimés en 3D à Bienne.">
-<meta property="og:image" content="assets/img/accueil/heros-linea-1400.webp">
+<meta property="og:image" content="https://d3co-maquette.vercel.app/assets/img/marque/og-d3co.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#eeeae3">
 <link rel="icon" href="assets/img/marque/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
@@ -95,7 +100,8 @@
           <span data-i18n="heros.prix">dès 19,90 CHF</span>
         </div>
       </div>
-      <div class="heros__scene" data-heros-scene data-curseur-label="heros.curseur">
+      <div class="heros__defiler mono" aria-hidden="true"><span class="heros__defiler-axe"><i></i></span><span data-i18n="heros.defiler">Défiler</span></div>
+      <div class="heros__scene" data-heros-scene data-curseur-label="heros.curseur" role="button" tabindex="0" aria-label="Relancer l'impression du vase" data-i18n-attr="aria-label:heros.relancer">
         <img class="impression__repli" src="assets/img/accueil/heros-linea-1400.webp" alt="Linea, vase imprimé en 3D, coloris bleu nuit" data-i18n-attr="alt:heros.alt" style="object-fit:contain">
         <svg class="cotes" data-cotes viewBox="0 0 1000 1163" preserveAspectRatio="none" aria-hidden="true"></svg>
       </div>
@@ -107,15 +113,15 @@
     <div class="bandeau__piste" data-bandeau-piste>
       <div class="bandeau__groupe">
         <span class="bandeau__item" data-i18n="bandeau.1">Livraison offerte dès 100 CHF</span>
-        <img class="bandeau__img" src="assets/img/produits/twist/twist-orange-600.webp" alt="" width="56" height="56">
+        <img class="bandeau__img" src="assets/img/produits/twist/twist-orange-240.webp" alt="" width="56" height="56">
         <span class="bandeau__item" data-i18n="bandeau.2">Paiement par carte ou TWINT</span>
-        <img class="bandeau__img" src="assets/img/produits/flow/flow-vert-olive-600.webp" alt="" width="56" height="56">
+        <img class="bandeau__img" src="assets/img/produits/flow/flow-vert-olive-240.webp" alt="" width="56" height="56">
         <span class="bandeau__item" data-i18n="bandeau.3">Imprimé à Bienne</span>
-        <img class="bandeau__img" src="assets/img/produits/paper/paper-bleu-600.webp" alt="" width="56" height="56">
+        <img class="bandeau__img" src="assets/img/produits/paper/paper-bleu-240.webp" alt="" width="56" height="56">
         <span class="bandeau__item" data-i18n="bandeau.4">Garantie 6 mois</span>
-        <img class="bandeau__img" src="assets/img/produits/dia/dia-sable-rose-600.webp" alt="" width="56" height="56">
+        <img class="bandeau__img" src="assets/img/produits/dia/dia-sable-rose-240.webp" alt="" width="56" height="56">
         <span class="bandeau__item" data-i18n="bandeau.5">Livré en 2 à 5 jours ouvrables</span>
-        <img class="bandeau__img" src="assets/img/produits/linea/linea-orange-600.webp" alt="" width="56" height="56">
+        <img class="bandeau__img" src="assets/img/produits/linea/linea-orange-240.webp" alt="" width="56" height="56">
       </div>
     </div>
   </div>
@@ -132,6 +138,11 @@
     <div class="collection__fenetre" data-collection-fenetre>
       <div class="collection__piste" data-collection-piste></div>
     </div>
+    <div class="wrap collection__progres" aria-hidden="true">
+      <span class="mono" data-coll-compteur>01 / 08</span>
+      <span class="collection__barre"><i data-coll-barre></i></span>
+      <span class="mono muet" data-coll-aide data-i18n="coll.aide">Défilez pour parcourir la collection</span>
+    </div>
   </section>
 
   <!-- FABRICATION -->
@@ -142,7 +153,7 @@
           <span class="eyebrow" data-i18n="fab.eyebrow">Fabrication</span>
           <h2 class="titre-xl" data-split data-i18n="fab.titre">De la bobine à votre étagère.</h2>
         </div>
-        <p class="prose" data-i18n="fab.texte">Chaque pièce est imprimée à la commande dans notre atelier. Voici le chemin qu'elle suit.</p>
+        <p class="prose" data-i18n="fab.texte">Chaque pièce est imprimée dans notre atelier à Bienne. Voici les étapes, de votre choix jusqu'à votre porte.</p>
       </div>
       <div class="process__grid">
         <div class="process__visuel" data-process-visuel>
@@ -173,9 +184,9 @@
         </ol>
       </div>
       <div class="process__images mt-l">
-        <figure class="process__img" style="margin:0"><img src="assets/img/ambiance/g04-process-bobines-900.webp" alt="Trois bobines de filament PLA" data-i18n-attr="alt:fab.alt1" loading="lazy"></figure>
-        <figure class="process__img process__img--large" style="margin:0"><img src="assets/img/ambiance/g03-process-buse-macro-1800.webp" srcset="assets/img/ambiance/g03-process-buse-macro-900.webp 900w, assets/img/ambiance/g03-process-buse-macro-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" alt="Buse d'imprimante 3D en gros plan, en train de déposer le filament" data-i18n-attr="alt:fab.alt2" loading="lazy" data-parallaxe-img></figure>
-        <figure class="process__img" style="margin:0"><img src="assets/img/ambiance/g05-process-plateau-900.webp" alt="Plateau d'impression vide" data-i18n-attr="alt:fab.alt3" loading="lazy"></figure>
+        <figure data-reveler class="process__img" style="margin:0"><img src="assets/img/ambiance/g04-process-bobines-900.webp" alt="Trois bobines de filament PLA" data-i18n-attr="alt:fab.alt1" loading="lazy"></figure>
+        <figure data-reveler class="process__img process__img--large" style="margin:0"><img src="assets/img/ambiance/g03-process-buse-macro-1800.webp" srcset="assets/img/ambiance/g03-process-buse-macro-900.webp 900w, assets/img/ambiance/g03-process-buse-macro-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" alt="Buse d'imprimante 3D en gros plan, en train de déposer le filament" data-i18n-attr="alt:fab.alt2" loading="lazy" data-parallaxe-img></figure>
+        <figure data-reveler class="process__img" style="margin:0"><img src="assets/img/ambiance/g05-process-plateau-900.webp" alt="Plateau d'impression vide" data-i18n-attr="alt:fab.alt3" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -253,7 +264,7 @@
       <div class="pile conseils__intro">
         <span class="eyebrow" data-i18n="cons.eyebrow">Bien utiliser vos pièces</span>
         <h2 class="titre-l" data-i18n="cons.titre">Faites-les durer.</h2>
-        <figure class="conseils__img" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g08-conseils-fleurs-sechees-900.webp" alt="Bouquet de fleurs séchées posé sur un linge" data-i18n-attr="alt:cons.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img></figure>
+        <figure data-reveler class="conseils__img" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g08-conseils-fleurs-sechees-900.webp" alt="Bouquet de fleurs séchées posé sur un linge" data-i18n-attr="alt:cons.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img></figure>
       </div>
       <div class="conseil">
         <svg viewBox="0 0 64 64" aria-hidden="true" data-trace><path d="M14 22h36l-4 26a3 3 0 0 1-3 2.5H21a3 3 0 0 1-3-2.5L14 22Z"/><path d="M10 54h44" class="o"/><path d="M32 8c-3 5-5 7.5-5 10a5 5 0 0 0 10 0c0-2.5-2-5-5-10Z" class="o"/></svg>
@@ -286,7 +297,7 @@
         <p class="prose" data-i18n="mat.texte">Nos créations sont imprimées en PLA, un plastique fabriqué à base d'amidon de maïs. Les couches restent visibles : c'est la signature de l'impression 3D.</p>
         <span class="tag" data-i18n="mat.tag">Fin de vie et conditions de compostage : à préciser</span>
       </div>
-      <figure class="matiere__img" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g10-matiere-mais-amidon-900.webp" alt="Grains de maïs et amidon de maïs" data-i18n-attr="alt:mat.alt2" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
+      <figure data-reveler class="matiere__img" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g10-matiere-mais-amidon-900.webp" alt="Grains de maïs et amidon de maïs" data-i18n-attr="alt:mat.alt2" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
     </div>
   </section>
 
@@ -298,7 +309,7 @@
           <span class="eyebrow" data-i18n="at.eyebrow">L'atelier</span>
           <h2 class="titre-xl" data-split data-i18n="at.titre">Imprimé à Bienne, livré dans toute la Suisse.</h2>
         </div>
-        <p class="prose" data-i18n="at.texte">Les commandes partent de notre atelier de la Florastrasse et arrivent en 2 à 5 jours ouvrables, partout en Suisse.</p>
+        <p class="prose" data-i18n="at.texte">Livraison partout en Suisse, en 2 à 5 jours ouvrables. Offerte dès 100 CHF de commande.</p>
       </div>
       <div class="atelier__grid">
         <div class="pile">
@@ -314,7 +325,7 @@
             <div><span class="mono muet" data-i18n="at.email">E-mail</span><span class="valeur">info@d3co.ch</span><button class="copier" type="button" data-copier="info@d3co.ch" data-i18n="general.copier">Copier</button></div>
             <div><span class="mono muet">Instagram</span><a class="valeur" href="https://www.instagram.com/d3co.ch" target="_blank" rel="noopener">@d3co.ch ↗</a><span></span></div>
           </div>
-          <figure class="atelier__photo" style="margin:0;overflow:hidden;position:relative">
+          <figure data-reveler class="atelier__photo" style="margin:0;overflow:hidden;position:relative">
             <picture>
               <source media="(max-width: 700px)" srcset="assets/img/ambiance/g12-atelier-mobile-900.webp">
               <img src="assets/img/ambiance/g11-atelier-1800.webp" srcset="assets/img/ambiance/g11-atelier-900.webp 900w, assets/img/ambiance/g11-atelier-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 40vw" alt="Atelier lumineux avec une rangée d'imprimantes 3D" data-i18n-attr="alt:at.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img>
@@ -332,8 +343,8 @@
       <div class="pile">
         <span class="eyebrow" data-i18n="mes.eyebrow">Sur mesure</span>
         <h2 class="titre-xl" data-split data-i18n="mes.titre">Une idée ? Nous l'imprimons.</h2>
-        <p class="prose muet" data-i18n="mes.texte">Objet décoratif ou pièce technique : décrivez votre projet, D3CO revient vers vous avec une proposition.</p>
-        <figure class="croquis" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g13-sur-mesure-croquis-900.webp" alt="Croquis au crayon sur papier calque, pied à coulisse et règle" data-i18n-attr="alt:mes.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img></figure>
+        <p class="prose muet" data-i18n="mes.texte">Objet décoratif ou pièce technique : décrivez votre projet en trois étapes, D3CO vous répond.</p>
+        <figure data-reveler class="croquis" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g13-sur-mesure-croquis-900.webp" alt="Croquis au crayon sur papier calque, pied à coulisse et règle" data-i18n-attr="alt:mes.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img></figure>
       </div>
       <form class="formulaire" data-mesure-form novalidate>
         <div class="formulaire__etapes" aria-hidden="true"><span class="est-fait"></span><span></span><span></span></div>
@@ -412,7 +423,7 @@
         <p class="muet" data-i18n="pied.livraison">Livraison en Suisse en 2 à 5 jours ouvrables. Offerte dès 100 CHF.</p>
       </div>
       <div>
-        <h4 data-i18n="pied.boutique">Boutique</h4>
+        <p class="pied__titre" data-i18n="pied.boutique">Boutique</p>
         <ul>
           <li><a href="boutique.html#cache-pots" data-i18n="cat.cache-pots">Cache-pots</a></li>
           <li><a href="boutique.html#vases" data-i18n="cat.vases">Vases</a></li>
@@ -421,7 +432,7 @@
         </ul>
       </div>
       <div>
-        <h4 data-i18n="pied.infos">Informations</h4>
+        <p class="pied__titre" data-i18n="pied.infos">Informations</p>
         <ul>
           <li><a href="https://www.d3co.ch/terms-conditions" target="_blank" rel="noopener" data-i18n="pied.cgv">Conditions générales (site actuel) ↗</a></li>
           <li><a href="index.html#conseils" data-i18n="pied.garantie">Garantie et retours</a></li>
@@ -429,7 +440,7 @@
         </ul>
       </div>
       <div>
-        <h4 data-i18n="pied.contact">Contact</h4>
+        <p class="pied__titre" data-i18n="pied.contact">Contact</p>
         <ul>
           <li>Florastrasse 16<br>2502 Biel/Bienne</li>
           <li><a href="tel:+41786688977">+41 78 668 89 77</a></li>

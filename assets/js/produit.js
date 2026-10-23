@@ -64,7 +64,7 @@ function rendreFiche(premier = false) {
   const tailles = f.tailles;
   $('[data-taille-note]').textContent = f.noteTailles ? t('autresTailles') : '';
   $('[data-tailles]').innerHTML = !tailles.length ? `<span class="muet">${t('aCompleter')}</span>`
-    : tailles.length === 1 ? `<span class="taille" aria-pressed="true">${t('tailleUnique')} · ${libTaille(tailles[0])}</span>`
+    : tailles.length === 1 ? `<span class="taille">${t('tailleUnique')} · ${libTaille(tailles[0])}</span>`
       : tailles.map((x) => `<button class="taille" type="button" data-taille="${x.id}" aria-pressed="${x.id === choix.taille}">${libTaille(x)}</button>`).join('');
   $('[data-tailles-plan]').innerHTML = tailles.length > 1 ? tailles.map((x) => `<button class="taille" type="button" data-taille="${x.id}" aria-pressed="${x.id === choix.taille}">${libTaille(x)}</button>`).join('') : '';
   $('[data-ajouter]').disabled = !!P.aCompleter;

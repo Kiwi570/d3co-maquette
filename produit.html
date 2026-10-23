@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>D3CO Fiche produit</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Fiche produit D3CO : objet imprimé en 3D à Bienne, coloris, tailles, dimensions et livraison.">
+<meta name="robots" content="noindex, nofollow">
+<title>Fiche produit · D3CO</title>
+<meta name="description" content="Fiche produit D3CO&nbsp;: objet imprimé en 3D à Bienne, coloris, tailles, dimensions et livraison.">
 <meta property="og:title" content="D3CO · Fiche produit">
 <meta property="og:image" content="https://d3co-maquette.vercel.app/assets/img/marque/og-d3co.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#eeeae3">
 <link rel="icon" href="assets/img/marque/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/marque/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -37,7 +38,7 @@
         <button type="button" data-lang="fr" aria-pressed="true">FR</button>
         <button type="button" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <button class="panier-btn" type="button" data-ouvrir-panier data-i18n-attr="aria-label:panier.ouvrir" aria-label="Ouvrir le panier">
+      <button class="panier-btn" type="button" data-ouvrir-panier>
         <svg aria-hidden="true"><use href="#i-panier"/></svg>
         <span class="libelle" data-i18n="nav.panier">Panier</span>
         <span class="compte" data-compte>0</span>
@@ -47,7 +48,7 @@
   </div>
 </header>
 
-<div class="menu-mobile" id="menu-mobile" hidden>
+<div class="menu-mobile" id="menu-mobile" hidden data-lenis-prevent>
   <div class="menu-mobile__haut">
     <a class="logo" href="index.html" aria-label="D3CO, accueil"><svg viewBox="0 0 1675 441" aria-hidden="true"><use href="#logo-d3co"/></svg></a>
     <button class="fermer" type="button" data-fermer-menu data-i18n-attr="aria-label:general.fermer" aria-label="Fermer">×</button>
@@ -60,17 +61,18 @@
   </nav>
   <div class="menu-mobile__bas mono">
     <span>Florastrasse 16 · 2502 Biel/Bienne</span>
-    <span>+41 78 668 89 77</span>
+    <a href="tel:+41786688977">+41 78 668 89 77</a>
   </div>
 </div>
 
 <main id="contenu" class="produit">
   <div class="wrap">
-    <nav class="fil" aria-label="Fil d'Ariane"><a href="index.html" data-i18n="pro.accueil">Accueil</a><span>/</span><a href="boutique.html" data-i18n="nav.boutique">Boutique</a><span>/</span><a href="boutique.html" data-fil-cat></a><span>/</span><span data-fil-nom></span></nav>
+    <nav class="fil" aria-label="Fil d’Ariane"><a href="index.html" data-i18n="pro.accueil">Accueil</a><span>/</span><a href="boutique.html" data-i18n="nav.boutique">Boutique</a><span>/</span><a href="boutique.html" data-fil-cat></a><span>/</span><span data-fil-nom></span></nav>
+    <noscript><p class="prose" style="padding:24px 0">Activez JavaScript pour afficher la collection. L’atelier répond aussi au <a href="tel:+41786688977">+41&nbsp;78&nbsp;668&nbsp;89&nbsp;77</a> et à <a href="mailto:info@d3co.ch">info@d3co.ch</a>.</p></noscript>
     <div class="produit__grid">
       <div class="galerie">
         <div class="scene-produit" data-scene>
-          <img class="impression__repli" data-repli src="" alt="" style="object-fit:contain">
+          <img class="impression__repli" data-repli alt="" style="object-fit:contain">
           <div class="loupe" data-loupe aria-hidden="true"></div>
         </div>
         <div class="vignettes" role="group" aria-label="Coloris" data-vignettes></div>
@@ -88,14 +90,14 @@
         <div class="fiche__bloc">
           <span class="mono"><span data-i18n="pro.couleur">Couleur</span><b data-nom-couleur></b></span>
           <div class="nuancier" data-nuancier></div>
-          <span class="tag" data-i18n="coul.note">Noms des coloris : à confirmer</span>
+          <span class="tag" data-i18n="coul.note">Noms des coloris&nbsp;: à confirmer</span>
         </div>
         <div class="fiche__bloc" data-bloc-taille>
           <span class="mono"><span data-i18n="pro.taille">Taille</span><span data-taille-note></span></span>
           <div class="tailles" data-tailles></div>
         </div>
         <div class="achat" data-achat>
-          <div class="quantite" role="group" aria-label="Quantité"><button type="button" data-q="-1" aria-label="−">−</button><span data-q-val>1</span><button type="button" data-q="1" aria-label="+">+</button></div>
+          <div class="quantite" role="group" aria-label="Quantité"><button type="button" data-q="-1" data-i18n-attr="aria-label:q.moins" aria-label="Retirer une pièce">−</button><span data-q-val aria-live="polite">1</span><button type="button" data-q="1" data-i18n-attr="aria-label:q.plus" aria-label="Ajouter une pièce">+</button></div>
           <button class="btn btn--orange" type="button" data-ajouter data-magnet><span data-i18n="pro.ajouter">Ajouter au panier</span><svg class="fleche" aria-hidden="true"><use href="#i-fleche"/></svg></button>
         </div>
         <div class="livraison-estimee" data-livraison></div>
@@ -109,7 +111,7 @@
       <div class="dessin__plan" data-plan></div>
       <div class="pile">
         <span class="eyebrow" data-i18n="pro.plan">Dessin technique</span>
-        <h2 class="titre-xl" data-split data-i18n="pro.plan.t">Les cotes de l'atelier.</h2>
+        <h2 class="titre-xl" data-split data-i18n="pro.plan.t">Les cotes de l’atelier.</h2>
         <p class="prose muet" data-i18n="pro.plan.p">La silhouette vient de la vraie photo du produit, les cotes de la fiche actuelle. Choisissez une taille, le dessin suit.</p>
         <div class="tailles" data-tailles-plan></div>
         <label class="case" for="voir-trajet"><input id="voir-trajet" type="checkbox" checked data-voir-trajet><span data-i18n="pro.trajet">Afficher le parcours de la buse</span></label>
@@ -129,7 +131,7 @@
         </div>
       </div>
       <div class="chez-vous" data-chez>
-        <img data-decor src="assets/img/ambiance/g16-fiche-console-900.webp" alt="Console en chêne clair devant un mur blanc" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img width="720" height="900" data-decor src="assets/img/ambiance/g16-fiche-console-900.webp" alt="Console en chêne clair devant un mur blanc" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         <div class="chez-vous__objet" data-chez-objet><img alt="" data-chez-img></div>
       </div>
     </div>
@@ -167,7 +169,7 @@
         <ul>
           <li><a href="https://www.d3co.ch/terms-conditions" target="_blank" rel="noopener" data-i18n="pied.cgv">Conditions générales (site actuel) ↗</a></li>
           <li><a href="index.html#conseils" data-i18n="pied.garantie">Garantie et retours</a></li>
-          <li><span class="tag" data-i18n="pied.mentions">Mentions légales : à compléter</span></li>
+          <li><span class="tag" data-i18n="pied.mentions">Mentions légales&nbsp;: à compléter</span></li>
         </ul>
       </div>
       <div>
@@ -189,13 +191,13 @@
         <span>TWINT</span>
       </div>
       <button class="bouton-calme" type="button" data-calme aria-pressed="false" data-i18n="pied.calme">Réduire les animations</button>
-      <span class="mono" data-i18n="pied.maquette">Maquette : paiement et envois simulés</span>
+      <span class="mono" data-i18n="pied.maquette">Maquette&nbsp;: paiement et envois simulés</span>
     </div>
   </div>
 </footer>
 
 <div class="voile" data-voile></div>
-<aside class="tiroir" id="tiroir" aria-labelledby="tiroir-titre" aria-hidden="true">
+<aside class="tiroir" id="tiroir" role="dialog" aria-modal="true" aria-labelledby="tiroir-titre" aria-hidden="true" inert data-lenis-prevent>
   <div class="tiroir__haut">
     <h2 class="titre-m" id="tiroir-titre" data-i18n="panier.titre">Votre panier</h2>
     <button class="fermer" type="button" data-fermer-panier data-i18n-attr="aria-label:general.fermer" aria-label="Fermer">×</button>
@@ -203,7 +205,7 @@
   <div class="tiroir__liste" data-panier-liste></div>
   <div class="tiroir__bas" data-panier-bas></div>
 </aside>
-<div class="modale" id="modale" hidden role="dialog" aria-modal="true" aria-labelledby="modale-titre">
+<div class="modale" id="modale" hidden data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="modale-titre">
   <div class="voile est-visible" data-fermer-modale></div>
   <div class="modale__boite" data-modale-boite></div>
 </div>

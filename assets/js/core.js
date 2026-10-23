@@ -38,8 +38,8 @@ export function t(cle, vars = {}) {
   return s;
 }
 export const prix = (n) => (LANGUE === 'de'
-  ? 'CHF ' + new Intl.NumberFormat('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n)
-  : new Intl.NumberFormat('fr-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n) + ' CHF');
+  ? 'CHF\u00a0' + new Intl.NumberFormat('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n)
+  : new Intl.NumberFormat('fr-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n) + '\u00a0CHF');
 export const cm = (n) => (n == null ? '–' : (LANGUE === 'de' ? String(n) : String(n).replace('.', ',')));
 export const nomCouleur = (c) => (c ? (LANGUE === 'de' ? c.de : c.fr) : '');
 
@@ -113,6 +113,11 @@ function titres() {
 
 /* ---------- défilement fluide ---------- */
 export let lenis = null;
+/* verrou du défilement derrière menu, panier et modale (avec ou sans Lenis) */
+function verrou(on) {
+  if (on) lenis?.stop(); else lenis?.start();
+  document.documentElement.classList.toggle('verrou', on);
+}
 function defilement() {
   if (estCalme()) return;
   lenis = new Lenis({ autoRaf: false, lerp: 0.11, wheelMultiplier: 1, smoothWheel: true, anchors: false });
@@ -166,7 +171,7 @@ function ouvrirMenu() {
   const m = document.getElementById('menu-mobile');
   m.hidden = false;
   document.querySelector('[data-ouvrir-menu]')?.setAttribute('aria-expanded', 'true');
-  lenis?.stop();
+  verrou(true);
   if (!estCalme()) {
     gsap.fromTo(m, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'expo.out' });
     gsap.from(m.querySelectorAll('nav a'), { yPercent: 110, opacity: 0, duration: 0.8, ease: 'expo.out', stagger: 0.06, delay: 0.15 });
@@ -181,7 +186,7 @@ function fermerMenu() {
   liberer(m);
   document.querySelector('[data-ouvrir-menu]')?.focus();
   document.querySelector('[data-ouvrir-menu]')?.setAttribute('aria-expanded', 'false');
-  lenis?.start();
+  verrou(false);
 }
 
 /* ---------- curseur buse ---------- */
@@ -485,9 +490,10 @@ export function ouvrirPanier() {
   focusAvant = document.activeElement;
   tr.classList.add('est-ouvert');
   tr.setAttribute('aria-hidden', 'false');
+  tr.inert = false;
   document.querySelector('[data-voile]').classList.add('est-visible');
   document.body.classList.add('panier-ouvert');
-  lenis?.stop();
+  verrou(true);
   tr.querySelector('[data-fermer-panier]').focus();
   pieger(tr);
   if (!estCalme()) gsap.from(tr.querySelectorAll('.ligne-panier'), { x: 40, opacity: 0, duration: 0.6, ease: 'expo.out', stagger: 0.05, delay: 0.15 });
@@ -497,19 +503,23 @@ export function fermerPanier() {
   if (!tr?.classList.contains('est-ouvert')) return;
   tr.classList.remove('est-ouvert');
   tr.setAttribute('aria-hidden', 'true');
+  tr.inert = true;
   document.querySelector('[data-voile]').classList.remove('est-visible');
   document.body.classList.remove('panier-ouvert');
-  lenis?.start();
+  verrou(false);
   liberer(tr);
   focusAvant?.focus?.();
 }
 
 /* ---------- commande simulée ---------- */
+let focusAvantModale = null;
 function ouvrirModale(htmlContenu) {
   const m = document.getElementById('modale');
+  if (m.hidden) focusAvantModale = document.activeElement;
+  liberer(m);
   m.querySelector('[data-modale-boite]').innerHTML = htmlContenu;
   m.hidden = false;
-  lenis?.stop();
+  verrou(true);
   if (!estCalme()) gsap.fromTo(m.querySelector('.modale__boite'), { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out' });
   m.querySelector('input, button:not(.fermer)')?.focus();
   pieger(m);
@@ -519,7 +529,9 @@ function fermerModale() {
   if (!m || m.hidden) return;
   m.hidden = true;
   liberer(m);
-  lenis?.start();
+  verrou(false);
+  if (focusAvantModale?.isConnected) focusAvantModale.focus(); else document.querySelector('[data-ouvrir-panier]')?.focus();
+  focusAvantModale = null;
 }
 function recap() {
   const { sous, liv, total } = totaux();

@@ -25,14 +25,16 @@ function intro() {
   const zone = el.querySelector('[data-intro-strates]');
   zone.style.gridTemplateRows = `repeat(${N}, 1fr)`;
   zone.innerHTML = '<span></span>'.repeat(N);
+  el.style.background = 'transparent';
   const logo = el.querySelector('.intro__logo svg');
   const buse = el.querySelector('.intro__buse');
   const z = el.querySelector('[data-intro-z]');
   const pct = el.querySelector('[data-intro-pct]');
   const etat = { p: 0 };
   document.documentElement.style.overflow = 'hidden';
+  lenis?.stop();
   return new Promise((ok) => {
-    const tl = gsap.timeline({ onComplete: () => { el.remove(); document.documentElement.style.overflow = ''; ok(); } });
+    const tl = gsap.timeline({ onComplete: () => { el.remove(); document.documentElement.style.overflow = ''; lenis?.start(); ok(); } });
     tl.set(logo, { clipPath: 'inset(100% 0 0 0)' })
       .to(etat, {
         p: 1, duration: 1.7, ease: 'power1.inOut',
@@ -651,6 +653,7 @@ function surMesure() {
     pas.forEach((p) => { p.hidden = true; });
     ok.hidden = false;
     suiv.hidden = true; prec.hidden = true;
+    ok.focus();
     etiquette.textContent = '';
     barres.forEach((b) => b.classList.add('est-fait'));
   });

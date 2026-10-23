@@ -38,7 +38,7 @@ export function resumeTailles(p) {
 export function pastilles(p, max = 7) {
   const cs = toutesCouleurs(p);
   const vis = cs.slice(0, max);
-  return `<span class="pastilles" aria-label="${t('coloris', { n: cs.length })}">${vis.map((c) => `<span class="pastille" style="background:${fondNuance(c)}" title="${nomCouleur(c)}"></span>`).join('')}${cs.length > max ? `<span class="plus">+${cs.length - max}</span>` : ''}</span>`;
+  return `<span class="pastilles" role="img" aria-label="${t('coloris', { n: cs.length })}">${vis.map((c) => `<span class="pastille" style="background:${fondNuance(c)}" title="${nomCouleur(c)}"></span>`).join('')}${cs.length > max ? `<span class="plus">+${cs.length - max}</span>` : ''}</span>`;
 }
 
 /* scène provisoire pour les modèles sans photo (Solo, Fluffy) */
@@ -46,7 +46,7 @@ export function sceneManquante(p) {
   return `<div class="ph" style="position:absolute;inset:0">
     <svg viewBox="0 0 1000 1000" aria-hidden="true"><g fill="none" stroke="#8d877c" stroke-width="2" stroke-dasharray="6 8"><path d="M300 380 L700 380 L660 820 L340 820 Z"/><path d="M260 860 L740 860"/></g><text x="500" y="610" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="40" fill="#615d55">${p.nom.toUpperCase()}</text></svg>
     <span class="ph__balayage"></span>
-    <span class="ph__etiquette">${t('photosManquantes')}</span>
+    <span class="ph__etiquette" aria-hidden="true">${t('photosManquantes')}</span>
   </div>`;
 }
 

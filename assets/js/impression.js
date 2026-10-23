@@ -127,7 +127,11 @@ export class Impression {
       try { this.monterGL(img); } catch (e) { this.gl = false; }
     }
     if (!this.gl) this.monter2D(img);
-    if (this.repli) this.repli.style.visibility = 'hidden';
+    if (this.repli) {
+      this.repli.style.visibility = 'hidden';
+      // le canvas est décoratif : l'alternative texte de l'image passe sur la scène
+      if (this.repli.alt && !this.el.hasAttribute('aria-label')) { this.el.setAttribute('role', this.el.getAttribute('role') || 'img'); this.el.setAttribute('aria-label', this.repli.alt); }
+    }
     const ro = new ResizeObserver(() => this.taille());
     ro.observe(this.el);
     this.taille();

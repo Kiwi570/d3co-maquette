@@ -227,6 +227,7 @@ titre();
 plateau();
 rendreFiltres();
 rendreGrille(false);
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (CATS.includes(h)) { etat.cat = h; rendreFiltres(); rendreGrille(); } });
 magnetiques();
 if (!estCalme()) {
   const cartes = grille.querySelectorAll('.carte-produit');

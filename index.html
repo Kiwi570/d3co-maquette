@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>D3CO Couche par couche</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="D3CO : vases, cache-pots et bac à fruits imprimés en 3D en PLA dans notre atelier à Bienne. Livraison en Suisse, offerte dès 100 CHF.">
+<meta name="robots" content="noindex, nofollow">
+<title>D3CO · Couche par couche</title>
+<meta name="description" content="D3CO&nbsp;: vases, cache-pots et bac à fruits imprimés en 3D en PLA dans notre atelier à Bienne. Livraison en Suisse, offerte dès 100 CHF.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="D3CO · Imprimé à Bienne, couche par couche">
 <meta property="og:description" content="Vases, cache-pots et bac à fruits imprimés en 3D à Bienne.">
@@ -15,8 +15,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#eeeae3">
 <link rel="icon" href="assets/img/marque/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/marque/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
+<script>try{if(sessionStorage.getItem('d3co-intro')||location.hash||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('sans-intro')}catch(e){}</script>
+<noscript><style>.intro{display:none}</style></noscript>
 </head>
 <body data-page="accueil">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -41,7 +44,7 @@
         <button type="button" data-lang="fr" aria-pressed="true">FR</button>
         <button type="button" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <button class="panier-btn" type="button" data-ouvrir-panier data-i18n-attr="aria-label:panier.ouvrir" aria-label="Ouvrir le panier">
+      <button class="panier-btn" type="button" data-ouvrir-panier>
         <svg aria-hidden="true"><use href="#i-panier"/></svg>
         <span class="libelle" data-i18n="nav.panier">Panier</span>
         <span class="compte" data-compte>0</span>
@@ -51,7 +54,7 @@
   </div>
 </header>
 
-<div class="menu-mobile" id="menu-mobile" hidden>
+<div class="menu-mobile" id="menu-mobile" hidden data-lenis-prevent>
   <div class="menu-mobile__haut">
     <a class="logo" href="index.html" aria-label="D3CO, accueil"><svg viewBox="0 0 1675 441" aria-hidden="true"><use href="#logo-d3co"/></svg></a>
     <button class="fermer" type="button" data-fermer-menu data-i18n-attr="aria-label:general.fermer" aria-label="Fermer">×</button>
@@ -64,7 +67,7 @@
   </nav>
   <div class="menu-mobile__bas mono">
     <span>Florastrasse 16 · 2502 Biel/Bienne</span>
-    <span>+41 78 668 89 77</span>
+    <a href="tel:+41786688977">+41 78 668 89 77</a>
   </div>
 </div>
 
@@ -82,7 +85,7 @@
   <section class="heros" id="heros">
     <picture class="heros__fond">
       <source media="(max-width: 700px)" srcset="assets/img/ambiance/g02-accueil-heros-fond-mobile-900.webp 900w, assets/img/ambiance/g02-accueil-heros-fond-mobile-1800.webp 1800w" sizes="100vw">
-      <img src="assets/img/ambiance/g01-accueil-heros-fond-1800.webp" srcset="assets/img/ambiance/g01-accueil-heros-fond-900.webp 900w, assets/img/ambiance/g01-accueil-heros-fond-1800.webp 1800w" sizes="100vw" alt="" style="width:100%;height:100%;object-fit:cover" data-parallaxe="0.12">
+      <img width="1672" height="941" src="assets/img/ambiance/g01-accueil-heros-fond-1800.webp" srcset="assets/img/ambiance/g01-accueil-heros-fond-900.webp 900w, assets/img/ambiance/g01-accueil-heros-fond-1800.webp 1800w" sizes="100vw" alt="" style="width:100%;height:100%;object-fit:cover" data-parallaxe="0.12">
     </picture>
     <div class="wrap heros__grid">
       <span class="eyebrow heros__eyebrow" data-i18n="heros.eyebrow">Objets imprimés en 3D · Biel/Bienne</span>
@@ -101,8 +104,8 @@
         </div>
       </div>
       <div class="heros__defiler mono" aria-hidden="true"><span class="heros__defiler-axe"><i></i></span><span data-i18n="heros.defiler">Défiler</span></div>
-      <div class="heros__scene" data-heros-scene data-curseur-label="heros.curseur" role="button" tabindex="0" aria-label="Relancer l'impression du vase" data-i18n-attr="aria-label:heros.relancer">
-        <img class="impression__repli" src="assets/img/accueil/heros-linea-1400.webp" alt="Linea, vase imprimé en 3D, coloris bleu nuit" data-i18n-attr="alt:heros.alt" style="object-fit:contain">
+      <div class="heros__scene" data-heros-scene data-curseur-label="heros.curseur" role="button" tabindex="0" aria-label="Relancer l’impression du vase" data-i18n-attr="aria-label:heros.relancer">
+        <img width="895" height="1276" class="impression__repli" fetchpriority="high" src="assets/img/accueil/heros-linea-1400.webp" alt="Linea, vase imprimé en 3D, coloris bleu nuit" data-i18n-attr="alt:heros.alt" style="object-fit:contain">
         <svg class="cotes" data-cotes viewBox="0 0 1000 1163" preserveAspectRatio="none" aria-hidden="true"></svg>
       </div>
     </div>
@@ -133,7 +136,7 @@
         <span class="eyebrow" data-i18n="coll.eyebrow">La collection</span>
         <h2 class="titre-xl" data-split data-i18n="coll.titre">Huit formes, tracées par la buse.</h2>
       </div>
-      <p class="prose" data-i18n="coll.texte">Avant la photo, le parcours de la buse : chaque modèle apparaît d'abord tel que l'imprimante le dessine, couche après couche, à partir de sa vraie silhouette.</p>
+      <p class="prose" data-i18n="coll.texte">Avant la photo, le parcours de la buse&nbsp;: chaque modèle apparaît d’abord tel que l’imprimante le dessine, couche après couche, à partir de sa vraie silhouette.</p>
     </div>
     <div class="collection__fenetre" data-collection-fenetre>
       <div class="collection__piste" data-collection-piste></div>
@@ -153,11 +156,11 @@
           <span class="eyebrow" data-i18n="fab.eyebrow">Fabrication</span>
           <h2 class="titre-xl" data-split data-i18n="fab.titre">De la bobine à votre étagère.</h2>
         </div>
-        <p class="prose" data-i18n="fab.texte">Chaque pièce est imprimée dans notre atelier à Bienne. Voici les étapes, de votre choix jusqu'à votre porte.</p>
+        <p class="prose" data-i18n="fab.texte">Chaque pièce est imprimée dans notre atelier à Bienne. Voici les étapes, de votre choix jusqu’à votre porte.</p>
       </div>
       <div class="process__grid">
         <div class="process__visuel" data-process-visuel>
-          <canvas data-process-canvas aria-label="Animation : une pièce s'imprime couche par couche" role="img"></canvas>
+          <canvas data-process-canvas aria-label="Animation&nbsp;: une pièce s’imprime couche par couche" role="img"></canvas>
           <div class="process__lecture"><span data-process-couche>COUCHE 000 / 120</span><span data-i18n="fab.illustratif">ILLUSTRATIF</span></div>
         </div>
         <ol class="etapes" data-etapes style="list-style:none;margin:0;padding:0">
@@ -173,20 +176,20 @@
           </li>
           <li class="etape">
             <span class="etape__num">03</span>
-            <h3 data-i18n="fab.e3.t">Nous l'imprimons couche par couche</h3>
+            <h3 data-i18n="fab.e3.t">Nous l’imprimons couche par couche</h3>
             <p data-i18n="fab.e3.p">Votre pièce est imprimée dans notre atelier à Bienne, sur des imprimantes 3D de haute précision.</p>
           </li>
           <li class="etape">
             <span class="etape__num">04</span>
             <h3 data-i18n="fab.e4.t">Vous la recevez en 2 à 5 jours ouvrables</h3>
-            <p data-i18n="fab.e4.p">Livraison partout en Suisse : 5 CHF, offerte dès 100 CHF de commande.</p>
+            <p data-i18n="fab.e4.p">Livraison partout en Suisse&nbsp;: 5 CHF, offerte dès 100 CHF de commande.</p>
           </li>
         </ol>
       </div>
       <div class="process__images mt-l">
-        <figure data-reveler class="process__img" style="margin:0"><img src="assets/img/ambiance/g04-process-bobines-900.webp" alt="Trois bobines de filament PLA" data-i18n-attr="alt:fab.alt1" loading="lazy"></figure>
-        <figure data-reveler class="process__img process__img--large" style="margin:0"><img src="assets/img/ambiance/g03-process-buse-macro-1800.webp" srcset="assets/img/ambiance/g03-process-buse-macro-900.webp 900w, assets/img/ambiance/g03-process-buse-macro-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" alt="Buse d'imprimante 3D en gros plan, en train de déposer le filament" data-i18n-attr="alt:fab.alt2" loading="lazy" data-parallaxe-img></figure>
-        <figure data-reveler class="process__img" style="margin:0"><img src="assets/img/ambiance/g05-process-plateau-900.webp" alt="Plateau d'impression vide" data-i18n-attr="alt:fab.alt3" loading="lazy"></figure>
+        <figure data-reveler class="process__img" style="margin:0"><img width="720" height="900" src="assets/img/ambiance/g04-process-bobines-900.webp" alt="Trois bobines de filament PLA" data-i18n-attr="alt:fab.alt1" loading="lazy"></figure>
+        <figure data-reveler class="process__img process__img--large" style="margin:0"><img width="1672" height="941" src="assets/img/ambiance/g03-process-buse-macro-1800.webp" srcset="assets/img/ambiance/g03-process-buse-macro-900.webp 900w, assets/img/ambiance/g03-process-buse-macro-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" alt="Buse d’imprimante 3D en gros plan, en train de déposer le filament" data-i18n-attr="alt:fab.alt2" loading="lazy" data-parallaxe-img></figure>
+        <figure data-reveler class="process__img" style="margin:0"><img width="720" height="900" src="assets/img/ambiance/g05-process-plateau-900.webp" alt="Plateau d’impression vide" data-i18n-attr="alt:fab.alt3" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -197,18 +200,18 @@
       <div class="pile">
         <span class="eyebrow" data-i18n="coul.eyebrow">Coloris</span>
         <h2 class="titre-xl" data-split data-i18n="coul.titre">Trouvez la couleur de votre pièce.</h2>
-        <p class="prose muet" data-i18n="coul.texte">Choisissez un modèle, puis un coloris : la pièce se réimprime sous vos yeux, couche après couche.</p>
+        <p class="prose muet" data-i18n="coul.texte">Choisissez un modèle, puis un coloris&nbsp;: la pièce se réimprime sous vos yeux, couche après couche.</p>
         <div class="onglets" role="group" aria-label="Modèle" data-couleurs-onglets></div>
         <div class="nuance-nom"><strong data-couleurs-nom>Bleu nuit</strong><span class="mono muet" data-couleurs-info></span></div>
         <div class="nuancier" role="group" aria-label="Coloris" data-couleurs-nuancier></div>
-        <span class="tag" data-i18n="coul.note">Noms des coloris : à confirmer</span>
+        <span class="tag" data-i18n="coul.note">Noms des coloris&nbsp;: à confirmer</span>
         <div class="rangee">
           <button class="btn" type="button" data-couleurs-ajouter data-magnet><span data-i18n="coul.ajouter">Ajouter au panier</span><svg class="fleche" aria-hidden="true"><use href="#i-fleche"/></svg></button>
           <a class="lien" href="produit.html#linea" data-couleurs-lien data-i18n="coul.fiche">Voir la fiche</a>
         </div>
       </div>
       <div class="couleurs__scene" data-couleurs-scene>
-        <img class="impression__repli" src="assets/img/produits/linea/linea-bleu-nuit-1200.webp" alt="" style="object-fit:contain">
+        <img width="1200" height="1200" class="impression__repli" src="assets/img/produits/linea/linea-bleu-nuit-1200.webp" alt="" style="object-fit:contain">
       </div>
     </div>
   </section>
@@ -219,9 +222,9 @@
       <div class="entete-section">
         <div class="pile">
           <span class="eyebrow" data-i18n="saison.eyebrow">En ce moment</span>
-          <h2 class="titre-l" data-i18n="saison.titre">Tons d'automne</h2>
+          <h2 class="titre-l" data-i18n="saison.titre">Tons d’automne</h2>
         </div>
-        <p class="prose" data-i18n="saison.texte">Brun, vert olive, orange et sable rosé : quatre coloris de la collection pour la saison.</p>
+        <p class="prose" data-i18n="saison.texte">Brun, vert olive, orange et sable rosé&nbsp;: quatre coloris de la collection pour la saison.</p>
       </div>
       <div class="saison__liste" data-saison></div>
     </div>
@@ -235,24 +238,24 @@
           <span class="eyebrow" data-i18n="ens.eyebrow">Composez votre ensemble</span>
           <h2 class="titre-xl" data-split data-i18n="ens.titre">Trois pièces, une étagère.</h2>
         </div>
-        <p class="prose" data-i18n="ens.texte">Choisissez jusqu'à trois objets : ils se posent sur l'étagère et le total se calcule en direct, livraison comprise.</p>
+        <p class="prose" data-i18n="ens.texte">Choisissez jusqu’à trois objets&nbsp;: ils se posent sur l’étagère et le total se calcule en direct, livraison comprise.</p>
       </div>
       <div class="ensemble__grid">
         <div class="etagere" data-etagere>
           <picture>
             <source media="(max-width: 700px)" srcset="assets/img/ambiance/g07-accueil-etagere-mobile-900.webp">
-            <img src="assets/img/ambiance/g06-accueil-etagere-1800.webp" srcset="assets/img/ambiance/g06-accueil-etagere-900.webp 900w, assets/img/ambiance/g06-accueil-etagere-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 64vw" alt="Étagère en chêne clair, vide, sur un mur blanc" data-i18n-attr="alt:ens.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
+            <img width="1672" height="941" src="assets/img/ambiance/g06-accueil-etagere-1800.webp" srcset="assets/img/ambiance/g06-accueil-etagere-900.webp 900w, assets/img/ambiance/g06-accueil-etagere-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 64vw" alt="Étagère en chêne clair, vide, sur un mur blanc" data-i18n-attr="alt:ens.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
           </picture>
           <div class="etagere__objets" data-etagere-objets></div>
           <p class="etagere__vide" data-etagere-vide data-i18n="ens.vide">Choisissez un objet à droite</p>
         </div>
         <div class="choix">
-          <p class="mono muet" data-i18n="ens.choisir">Jusqu'à 3 objets</p>
+          <p class="mono muet" data-i18n="ens.choisir">Jusqu’à 3 objets</p>
           <div class="choix__liste" data-ensemble-choix></div>
           <div class="totaux" data-ensemble-totaux></div>
           <div class="jauge" data-ensemble-jauge></div>
-          <button class="btn btn--plein" type="button" data-ensemble-ajouter disabled data-i18n="ens.ajouter">Ajouter l'ensemble au panier</button>
-          <p class="mono muet" style="text-transform:none;letter-spacing:0" data-i18n="ens.note">Prix « dès » : taille la plus petite. Prix des autres tailles à compléter.</p>
+          <button class="btn btn--plein" type="button" data-ensemble-ajouter disabled data-i18n="ens.ajouter">Ajouter l’ensemble au panier</button>
+          <p class="mono muet" style="text-transform:none;letter-spacing:0" data-i18n="ens.note">Prix «&nbsp;dès&nbsp;»&nbsp;: taille la plus petite. Prix des autres tailles à compléter.</p>
         </div>
       </div>
     </div>
@@ -268,13 +271,13 @@
       </div>
       <div class="conseil">
         <svg viewBox="0 0 64 64" aria-hidden="true" data-trace><path d="M14 22h36l-4 26a3 3 0 0 1-3 2.5H21a3 3 0 0 1-3-2.5L14 22Z"/><path d="M10 54h44" class="o"/><path d="M32 8c-3 5-5 7.5-5 10a5 5 0 0 0 10 0c0-2.5-2-5-5-10Z" class="o"/></svg>
-        <h3 class="titre-m" data-i18n="cons.1.t">Cache-pots : sous-coupe incluse</h3>
-        <p data-i18n="cons.1.p">Elle retient le surplus d'eau. Arrosez avec modération pour qu'elle ne déborde pas.</p>
+        <h3 class="titre-m" data-i18n="cons.1.t">Cache-pots&nbsp;: sous-coupe incluse</h3>
+        <p data-i18n="cons.1.p">Elle retient le surplus d’eau. Arrosez avec modération pour qu’elle ne déborde pas.</p>
       </div>
       <div class="conseil">
         <svg viewBox="0 0 64 64" aria-hidden="true" data-trace><path d="M24 56c-4-8-4-20 2-30h12c6 10 6 22 2 30Z"/><path d="M32 26V10M32 14l-6-6M32 18l7-7M32 22l-8-4" class="o"/></svg>
-        <h3 class="titre-m" data-i18n="cons.2.t">Vases : pour les fleurs séchées</h3>
-        <p data-i18n="cons.2.p">Nos vases ne sont pas conçus pour contenir de l'eau. Le PLA est sensible à une exposition prolongée à l'eau.</p>
+        <h3 class="titre-m" data-i18n="cons.2.t">Vases&nbsp;: pour les fleurs séchées</h3>
+        <p data-i18n="cons.2.p">Nos vases ne sont pas conçus pour contenir de l’eau. Le PLA est sensible à une exposition prolongée à l’eau.</p>
       </div>
       <div class="conseil">
         <svg viewBox="0 0 64 64" aria-hidden="true" data-trace><path d="M32 6 52 13v16c0 13-9 22-20 28C21 51 12 42 12 29V13Z"/><path d="m23 31 6 6 12-13" class="o"/></svg>
@@ -287,15 +290,15 @@
   <!-- MATIÈRE -->
   <section class="matiere" id="matiere" data-matiere>
     <div class="matiere__repli" data-matiere-repli>
-      <img src="assets/img/ambiance/g09-matiere-stries-macro-1800.webp" srcset="assets/img/ambiance/g09-matiere-stries-macro-900.webp 900w, assets/img/ambiance/g09-matiere-stries-macro-1800.webp 1800w" sizes="100vw" alt="Surface d'une pièce imprimée en 3D, en très gros plan : les couches sont visibles" data-i18n-attr="alt:mat.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+      <img src="assets/img/ambiance/g09-matiere-stries-macro-1800.webp" srcset="assets/img/ambiance/g09-matiere-stries-macro-900.webp 900w, assets/img/ambiance/g09-matiere-stries-macro-1800.webp 1800w" sizes="100vw" alt="Surface d’une pièce imprimée en 3D, en très gros plan&nbsp;: les couches sont visibles" data-i18n-attr="alt:mat.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover">
     </div>
-    <span class="matiere__aide" data-i18n="mat.aide">Passez le curseur : la buse dépose son filament</span>
+    <span class="matiere__aide" data-i18n="mat.aide">Passez le curseur&nbsp;: la buse dépose son filament</span>
     <div class="wrap matiere__contenu">
       <div class="matiere__carte">
         <span class="eyebrow" data-i18n="mat.eyebrow">Matière</span>
-        <h2 class="titre-xl" data-i18n="mat.titre">Du PLA d'origine végétale.</h2>
-        <p class="prose" data-i18n="mat.texte">Nos créations sont imprimées en PLA, un plastique fabriqué à base d'amidon de maïs. Les couches restent visibles : c'est la signature de l'impression 3D.</p>
-        <span class="tag" data-i18n="mat.tag">Fin de vie et conditions de compostage : à préciser</span>
+        <h2 class="titre-xl" data-i18n="mat.titre">Du PLA d’origine végétale.</h2>
+        <p class="prose" data-i18n="mat.texte">Nos créations sont imprimées en PLA, un plastique fabriqué à base d’amidon de maïs. Les couches restent visibles&nbsp;: c’est la signature de l’impression 3D.</p>
+        <span class="tag" data-i18n="mat.tag">Fin de vie et conditions de compostage&nbsp;: à préciser</span>
       </div>
       <figure data-reveler class="matiere__img" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g10-matiere-mais-amidon-900.webp" alt="Grains de maïs et amidon de maïs" data-i18n-attr="alt:mat.alt2" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
     </div>
@@ -306,31 +309,31 @@
     <div class="wrap">
       <div class="entete-section">
         <div class="pile">
-          <span class="eyebrow" data-i18n="at.eyebrow">L'atelier</span>
+          <span class="eyebrow" data-i18n="at.eyebrow">L’atelier</span>
           <h2 class="titre-xl" data-split data-i18n="at.titre">Imprimé à Bienne, livré dans toute la Suisse.</h2>
         </div>
         <p class="prose" data-i18n="at.texte">Livraison partout en Suisse, en 2 à 5 jours ouvrables. Offerte dès 100 CHF de commande.</p>
       </div>
       <div class="atelier__grid">
         <div class="pile">
-          <div class="carte-suisse" data-carte role="img" aria-label="Carte de la Suisse : livraisons depuis Bienne" data-i18n-attr="aria-label:at.carte"></div>
+          <div class="carte-suisse" data-carte role="img" aria-label="Carte de la Suisse&nbsp;: livraisons depuis Bienne" data-i18n-attr="aria-label:at.carte"></div>
           <p class="mono muet" data-i18n="at.legende">Livraison en Suisse uniquement · 2 à 5 jours ouvrables · tracés illustratifs</p>
         </div>
         <div class="pile">
-          <blockquote class="citation" data-i18n="at.citation">Issu du domaine technique et automaticien de formation, j'ai d'abord utilisé l'impression 3D pour fabriquer des pièces pratiques. Rapidement, j'ai découvert une passion : transformer cette technologie en un outil créatif.</blockquote>
+          <blockquote class="citation" data-i18n="at.citation">Issu du domaine technique et automaticien de formation, j’ai d’abord utilisé l’impression 3D pour fabriquer des pièces pratiques. Rapidement, j’ai découvert une passion&nbsp;: transformer cette technologie en un outil créatif.</blockquote>
           <p class="muet"><span data-i18n="at.auteur">Le fondateur de D3CO</span> · <span class="tag" data-i18n="at.nom">Nom à compléter</span></p>
           <div class="coordonnees">
             <div><span class="mono muet" data-i18n="at.adresse">Adresse</span><span class="valeur">Florastrasse 16, 2502 Biel/Bienne</span><button class="copier" type="button" data-copier="Florastrasse 16, 2502 Biel/Bienne" data-i18n="general.copier">Copier</button></div>
-            <div><span class="mono muet" data-i18n="at.tel">Téléphone</span><span class="valeur">+41 78 668 89 77</span><button class="copier" type="button" data-copier="+41 78 668 89 77" data-i18n="general.copier">Copier</button></div>
-            <div><span class="mono muet" data-i18n="at.email">E-mail</span><span class="valeur">info@d3co.ch</span><button class="copier" type="button" data-copier="info@d3co.ch" data-i18n="general.copier">Copier</button></div>
+            <div><span class="mono muet" data-i18n="at.tel">Téléphone</span><a class="valeur" href="tel:+41786688977">+41 78 668 89 77</a><button class="copier" type="button" data-copier="+41 78 668 89 77" data-i18n="general.copier">Copier</button></div>
+            <div><span class="mono muet" data-i18n="at.email">E-mail</span><a class="valeur" href="mailto:info@d3co.ch">info@d3co.ch</a><button class="copier" type="button" data-copier="info@d3co.ch" data-i18n="general.copier">Copier</button></div>
             <div><span class="mono muet">Instagram</span><a class="valeur" href="https://www.instagram.com/d3co.ch" target="_blank" rel="noopener">@d3co.ch ↗</a><span></span></div>
           </div>
           <figure data-reveler class="atelier__photo" style="margin:0;overflow:hidden;position:relative">
             <picture>
               <source media="(max-width: 700px)" srcset="assets/img/ambiance/g12-atelier-mobile-900.webp">
-              <img src="assets/img/ambiance/g11-atelier-1800.webp" srcset="assets/img/ambiance/g11-atelier-900.webp 900w, assets/img/ambiance/g11-atelier-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 40vw" alt="Atelier lumineux avec une rangée d'imprimantes 3D" data-i18n-attr="alt:at.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img>
+              <img src="assets/img/ambiance/g11-atelier-1800.webp" srcset="assets/img/ambiance/g11-atelier-900.webp 900w, assets/img/ambiance/g11-atelier-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 40vw" alt="Atelier lumineux avec une rangée d’imprimantes 3D" data-i18n-attr="alt:at.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img>
             </picture>
-            <span class="ph__etiquette" data-i18n="general.illustration">Image d'illustration</span>
+            <span class="ph__etiquette" data-i18n="general.illustration">Image d’illustration</span>
           </figure>
         </div>
       </div>
@@ -342,8 +345,8 @@
     <div class="wrap mesure__grid">
       <div class="pile">
         <span class="eyebrow" data-i18n="mes.eyebrow">Sur mesure</span>
-        <h2 class="titre-xl" data-split data-i18n="mes.titre">Une idée ? Nous l'imprimons.</h2>
-        <p class="prose muet" data-i18n="mes.texte">Objet décoratif ou pièce technique : décrivez votre projet en trois étapes, D3CO vous répond.</p>
+        <h2 class="titre-xl" data-split data-i18n="mes.titre">Une idée&nbsp;? Nous l’imprimons.</h2>
+        <p class="prose muet" data-i18n="mes.texte">Objet décoratif ou pièce technique&nbsp;: décrivez votre projet en trois étapes, D3CO vous répond.</p>
         <figure data-reveler class="croquis" style="margin:0;overflow:hidden"><img src="assets/img/ambiance/g13-sur-mesure-croquis-900.webp" alt="Croquis au crayon sur papier calque, pied à coulisse et règle" data-i18n-attr="alt:mes.alt" loading="lazy" style="width:100%;height:100%;object-fit:cover" data-parallaxe-img></figure>
       </div>
       <form class="formulaire" data-mesure-form novalidate>
@@ -374,11 +377,11 @@
           </div>
           <div class="champ"><label for="mes-email" data-i18n="form.email">E-mail</label><input id="mes-email" name="email" type="email" autocomplete="email" required></div>
         </div>
-        <div class="message-simule" data-mesure-ok hidden>
-          <strong data-i18n="mes.ok.t">Demande simulée : rien n'a été envoyé.</strong>
-          <span class="muet" data-i18n="mes.ok.p">Sur le vrai site, votre demande arrivera chez D3CO, à l'adresse info@d3co.ch.</span>
+        <div class="message-simule" data-mesure-ok role="status" tabindex="-1" hidden>
+          <strong data-i18n="mes.ok.t">Demande simulée&nbsp;: rien n’a été envoyé.</strong>
+          <span class="muet" data-i18n="mes.ok.p">Sur le vrai site, votre demande arrivera chez D3CO, à l’adresse info@d3co.ch.</span>
         </div>
-        <p class="mono" data-mesure-erreur hidden style="color:var(--orange);text-transform:none;letter-spacing:0"></p>
+        <p class="mono" data-mesure-erreur role="alert" hidden style="color:var(--orange);text-transform:none;letter-spacing:0"></p>
         <div class="formulaire__nav">
           <button class="btn btn--ligne" type="button" data-mesure-prec hidden data-i18n="general.retour">Retour</button>
           <button class="btn btn--orange" type="submit" data-mesure-suiv data-magnet><span data-i18n="general.continuer">Continuer</span><svg class="fleche" aria-hidden="true"><use href="#i-fleche"/></svg></button>
@@ -395,7 +398,7 @@
           <span class="eyebrow">@d3co.ch</span>
           <h2 class="titre-xl" data-split data-i18n="com.titre">Rejoignez notre communauté.</h2>
         </div>
-        <p class="prose"><span data-i18n="com.texte">Nouveautés, coloris et coulisses de l'atelier sur Instagram.</span> <a class="lien" href="https://www.instagram.com/d3co.ch" target="_blank" rel="noopener" data-i18n="com.lien">Suivre @d3co.ch ↗</a></p>
+        <p class="prose"><span data-i18n="com.texte">Nouveautés, coloris et coulisses de l’atelier sur Instagram.</span> <a class="lien" href="https://www.instagram.com/d3co.ch" target="_blank" rel="noopener" data-i18n="com.lien">Suivre @d3co.ch ↗</a></p>
       </div>
       <div class="communaute__grid" data-communaute></div>
       <div class="newsletter">
@@ -406,10 +409,10 @@
         <form data-newsletter novalidate>
           <div class="newsletter__ligne">
             <div class="champ"><label for="news-email" data-i18n="form.email">E-mail</label><input id="news-email" type="email" name="email" autocomplete="email" required></div>
-            <button class="btn" type="submit" data-i18n="news.ok">S'inscrire</button>
+            <button class="btn" type="submit" data-i18n="news.ok">S’inscrire</button>
           </div>
-          <label class="case" for="news-accord"><input id="news-accord" type="checkbox" required><span data-i18n="news.accord">Oui, je souhaite m'inscrire à la newsletter.</span></label>
-          <p class="mono" data-news-retour hidden style="text-transform:none;letter-spacing:0"></p>
+          <label class="case" for="news-accord"><input id="news-accord" type="checkbox" required><span data-i18n="news.accord">Oui, je souhaite m’inscrire à la newsletter.</span></label>
+          <p class="mono" data-news-retour role="status" hidden style="text-transform:none;letter-spacing:0"></p>
         </form>
       </div>
     </div>
@@ -436,7 +439,7 @@
         <ul>
           <li><a href="https://www.d3co.ch/terms-conditions" target="_blank" rel="noopener" data-i18n="pied.cgv">Conditions générales (site actuel) ↗</a></li>
           <li><a href="index.html#conseils" data-i18n="pied.garantie">Garantie et retours</a></li>
-          <li><span class="tag" data-i18n="pied.mentions">Mentions légales : à compléter</span></li>
+          <li><span class="tag" data-i18n="pied.mentions">Mentions légales&nbsp;: à compléter</span></li>
         </ul>
       </div>
       <div>
@@ -458,13 +461,13 @@
         <span>TWINT</span>
       </div>
       <button class="bouton-calme" type="button" data-calme aria-pressed="false" data-i18n="pied.calme">Réduire les animations</button>
-      <span class="mono" data-i18n="pied.maquette">Maquette : paiement et envois simulés</span>
+      <span class="mono" data-i18n="pied.maquette">Maquette&nbsp;: paiement et envois simulés</span>
     </div>
   </div>
 </footer>
 
 <div class="voile" data-voile></div>
-<aside class="tiroir" id="tiroir" aria-labelledby="tiroir-titre" aria-hidden="true">
+<aside class="tiroir" id="tiroir" role="dialog" aria-modal="true" aria-labelledby="tiroir-titre" aria-hidden="true" inert data-lenis-prevent>
   <div class="tiroir__haut">
     <h2 class="titre-m" id="tiroir-titre" data-i18n="panier.titre">Votre panier</h2>
     <button class="fermer" type="button" data-fermer-panier data-i18n-attr="aria-label:general.fermer" aria-label="Fermer">×</button>
@@ -472,7 +475,7 @@
   <div class="tiroir__liste" data-panier-liste></div>
   <div class="tiroir__bas" data-panier-bas></div>
 </aside>
-<div class="modale" id="modale" hidden role="dialog" aria-modal="true" aria-labelledby="modale-titre">
+<div class="modale" id="modale" hidden data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="modale-titre">
   <div class="voile est-visible" data-fermer-modale></div>
   <div class="modale__boite" data-modale-boite></div>
 </div>

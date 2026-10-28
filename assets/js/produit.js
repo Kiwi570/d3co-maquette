@@ -1,8 +1,8 @@
 /* Fiche produit D3CO (une page pour tous les modèles : produit.html#linea) */
-import { init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, langue, onLangue, estCalme, estTactile, ajouterAuPanier, magnetiques } from './core.js?v=20261028';
-import { PRODUITS, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js?v=20261028';
-import { Impression, boiteUV } from './impression.js?v=20261028';
-import { fondNuance, lireChoix, memoriserChoix, carteCollection, ajoutDirect, sceneManquante, prixDes } from './composants.js?v=20261028';
+import { init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, langue, onLangue, estCalme, estTactile, ajouterAuPanier, magnetiques } from './core.js?v=20261028-2';
+import { PRODUITS, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js?v=20261028-2';
+import { Impression, boiteUV } from './impression.js?v=20261028-2';
+import { fondNuance, lireChoix, memoriserChoix, carteCollection, ajoutDirect, sceneManquante, prixDes } from './composants.js?v=20261028-2';
 
 init();
 
@@ -282,7 +282,22 @@ onLangue(() => { rendreFiche(); connexes(); $('[data-decor]').alt = t(LIGNES_DEC
 
 /* barre d'achat collante (téléphone) */
 const barre = $('[data-barre]');
-new IntersectionObserver(([en]) => barre.classList.toggle('est-visible', !en.isIntersecting && en.boundingClientRect.top < 0)).observe($('[data-achat]'));
+let apresAchat = false;
+let piedVisible = false;
+const majBarre = () => barre.classList.toggle('est-visible', apresAchat && !piedVisible);
+new IntersectionObserver(([en]) => { apresAchat = !en.isIntersecting && en.boundingClientRect.top < 0; majBarre(); }).observe($('[data-achat]'));
+new IntersectionObserver(([en]) => { piedVisible = en.isIntersecting; majBarre(); }).observe($('#pied'));
+
+/* hauteurs réelles : en-tête, vignettes de la galerie et barre d'achat */
+const racine = document.documentElement.style;
+const mesurer = () => {
+  racine.setProperty('--entete-h', `${$('#entete').offsetHeight}px`);
+  racine.setProperty('--vignettes-h', `${$('[data-vignettes]').offsetHeight}px`);
+  racine.setProperty('--barres-h', `${barre.offsetHeight}px`);
+};
+const roHauteurs = new ResizeObserver(mesurer);
+[$('#entete'), $('[data-vignettes]'), barre].forEach((el) => roHauteurs.observe(el));
+mesurer();
 
 charger(slugInitial(), true);
 loupe();

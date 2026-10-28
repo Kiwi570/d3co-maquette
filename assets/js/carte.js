@@ -1,6 +1,6 @@
 /* Carte de la Suisse : livraisons depuis l'atelier de Bienne (tracés illustratifs). */
-import { SUISSE } from './suisse.js?v=20261028';
-import { gsap, estCalme, langue, onLangue } from './core.js?v=20261028';
+import { SUISSE } from './suisse.js?v=20261028-2';
+import { gsap, estCalme, langue, onLangue } from './core.js?v=20261028-2';
 
 const LIBELLES = ['Zurich', 'Genève', 'Bâle', 'Berne', 'Lausanne', 'Lucerne', 'Lugano', 'Saint-Gall', 'Coire', 'Sion', 'Neuchâtel'];
 

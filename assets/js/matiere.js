@@ -1,7 +1,7 @@
 /* Section Matière : la macro des stries est ré-éclairée par le curseur (WebGL)
    et la buse dépose un filament orange qui refroidit en graphite (Canvas 2D). */
 import { Renderer, Program, Mesh, Texture, Triangle } from '../vendor/ogl/ogl.js';
-import { webglOk, estCalme, estTactile, t, onLangue } from './core.js?v=20261028';
+import { webglOk, estCalme, estTactile, t, onLangue } from './core.js?v=20261028-2';
 
 const vertex = /* glsl */ `
 attribute vec2 uv; attribute vec2 position; varying vec2 vUv;

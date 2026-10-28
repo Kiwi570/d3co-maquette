@@ -2,13 +2,13 @@
 import {
   init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, langue, onLangue, estCalme, estTactile,
   ajouterAuPanier, allerA, stock, magnetiques, totaux, toast, lenis,
-} from './core.js?v=20261028';
-import { PRODUITS, HEROS, SAISON, SITE, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js?v=20261028';
-import { FORMES } from './formes.js?v=20261028';
-import { Impression, boiteUV } from './impression.js?v=20261028';
-import { carteCollection, ajoutDirect, memoriserChoix, fondNuance, estBicolore, lienProduit } from './composants.js?v=20261028';
-import { carteSuisse } from './carte.js?v=20261028';
-import { matiere } from './matiere.js?v=20261028';
+} from './core.js?v=20261028-2';
+import { PRODUITS, HEROS, SAISON, SITE, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js?v=20261028-2';
+import { FORMES } from './formes.js?v=20261028-2';
+import { Impression, boiteUV } from './impression.js?v=20261028-2';
+import { carteCollection, ajoutDirect, memoriserChoix, fondNuance, estBicolore, lienProduit } from './composants.js?v=20261028-2';
+import { carteSuisse } from './carte.js?v=20261028-2';
+import { matiere } from './matiere.js?v=20261028-2';
 
 init();
 
@@ -37,7 +37,7 @@ function intro() {
     const tl = gsap.timeline({ onComplete: () => { el.remove(); document.documentElement.style.overflow = ''; lenis?.start(); ok(); } });
     tl.set(logo, { clipPath: 'inset(100% 0 0 0)' })
       .to(etat, {
-        p: 1, duration: 1.7, ease: 'power1.inOut',
+        p: 1, duration: 1.0, ease: 'power1.inOut',
         onUpdate: () => {
           const q = Math.round(etat.p * 24) / 24;
           logo.style.clipPath = `inset(${(1 - q) * 100}% 0 0 0)`;
@@ -47,9 +47,10 @@ function intro() {
           pct.textContent = `${String(Math.round(etat.p * 100)).padStart(3, '0')} %`;
         },
       })
-      .to(buse, { opacity: 0, duration: 0.2 })
-      .to(el.querySelector('.intro__centre'), { yPercent: -30, opacity: 0, duration: 0.5, ease: 'power2.in' }, '+=0.1')
-      .to(zone.children, { scaleY: 0, transformOrigin: 'top', duration: 0.7, ease: 'expo.inOut', stagger: { each: 0.035, from: 'end' } }, '-=0.25');
+      .to(buse, { opacity: 0, duration: 0.15 })
+      /* sortie du centre et des strates en parallèle : titre lisible avant 2,5 s */
+      .to(el.querySelector('.intro__centre'), { yPercent: -30, opacity: 0, duration: 0.5, ease: 'power2.in' }, 'sortie')
+      .to(zone.children, { scaleY: 0, transformOrigin: 'top', duration: 0.5, ease: 'expo.inOut', stagger: { each: 0.02, from: 'end' } }, 'sortie');
   });
 }
 

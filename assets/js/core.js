@@ -1,7 +1,7 @@
 /* Socle commun : langue, défilement, curseur, panier, transitions. */
 import { Lenis } from '../vendor/lenis/lenis.js';
-import { DE, T } from './i18n.js';
-import { PRODUITS, produit, finition, couleur, SITE } from './data.js';
+import { DE, T } from './i18n.js?v=20261028';
+import { PRODUITS, produit, finition, couleur, SITE } from './data.js?v=20261028';
 
 const { gsap, ScrollTrigger } = window;
 const plugins = ['ScrollTrigger', 'SplitText', 'DrawSVGPlugin', 'MotionPathPlugin', 'Flip'].map((n) => window[n]).filter(Boolean);

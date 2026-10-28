@@ -1,8 +1,8 @@
 /* Fiche produit D3CO (une page pour tous les modèles : produit.html#linea) */
-import { init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, langue, onLangue, estCalme, estTactile, ajouterAuPanier, magnetiques } from './core.js';
-import { PRODUITS, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js';
-import { Impression, boiteUV } from './impression.js';
-import { fondNuance, lireChoix, memoriserChoix, carteCollection, ajoutDirect, sceneManquante, prixDes } from './composants.js';
+import { init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, langue, onLangue, estCalme, estTactile, ajouterAuPanier, magnetiques } from './core.js?v=20261028';
+import { PRODUITS, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js?v=20261028';
+import { Impression, boiteUV } from './impression.js?v=20261028';
+import { fondNuance, lireChoix, memoriserChoix, carteCollection, ajoutDirect, sceneManquante, prixDes } from './composants.js?v=20261028';
 
 init();
 

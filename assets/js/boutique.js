@@ -1,8 +1,8 @@
 /* Page boutique D3CO */
-import { init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, onLangue, estCalme, estTactile, ajouterAuPanier, magnetiques } from './core.js';
-import { PRODUITS, produit, formeDe, finition, couleur, prixMin, toutesCouleurs } from './data.js';
-import { FORMES } from './formes.js';
-import { pastilles, prixDes, resumeTailles, sceneManquante, lienProduit, fondNuance, memoriserChoix } from './composants.js';
+import { init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, onLangue, estCalme, estTactile, ajouterAuPanier, magnetiques } from './core.js?v=20261028';
+import { PRODUITS, produit, formeDe, finition, couleur, prixMin, toutesCouleurs } from './data.js?v=20261028';
+import { FORMES } from './formes.js?v=20261028';
+import { pastilles, prixDes, resumeTailles, sceneManquante, lienProduit, fondNuance, memoriserChoix } from './composants.js?v=20261028';
 
 init();
 

@@ -1,6 +1,6 @@
 /* Briques réutilisées par l'accueil, la boutique et la fiche produit. */
-import { t, prix, cm, nomCouleur, stock, ajouterAuPanier } from './core.js';
-import { formeDe, prixMin, nbCouleurs, toutesCouleurs, finition } from './data.js';
+import { t, prix, cm, nomCouleur, stock, ajouterAuPanier } from './core.js?v=20261028';
+import { formeDe, prixMin, nbCouleurs, toutesCouleurs, finition } from './data.js?v=20261028';
 
 const BICOLORES = ['violet-bronze', 'turquoise', 'cuivre', 'bleu-magenta', 'rouge-noir', 'rouge-violet'];
 export const estBicolore = (c) => BICOLORES.includes(c.slug);

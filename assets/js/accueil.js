@@ -2,13 +2,13 @@
 import {
   init, gsap, ScrollTrigger, t, prix, cm, nomCouleur, langue, onLangue, estCalme, estTactile,
   ajouterAuPanier, allerA, stock, magnetiques, totaux, toast, lenis,
-} from './core.js';
-import { PRODUITS, HEROS, SAISON, SITE, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js';
-import { FORMES } from './formes.js';
-import { Impression, boiteUV } from './impression.js';
-import { carteCollection, ajoutDirect, memoriserChoix, fondNuance, estBicolore, lienProduit } from './composants.js';
-import { carteSuisse } from './carte.js';
-import { matiere } from './matiere.js';
+} from './core.js?v=20261028';
+import { PRODUITS, HEROS, SAISON, SITE, produit, formeDe, finition, couleur, toutesCouleurs } from './data.js?v=20261028';
+import { FORMES } from './formes.js?v=20261028';
+import { Impression, boiteUV } from './impression.js?v=20261028';
+import { carteCollection, ajoutDirect, memoriserChoix, fondNuance, estBicolore, lienProduit } from './composants.js?v=20261028';
+import { carteSuisse } from './carte.js?v=20261028';
+import { matiere } from './matiere.js?v=20261028';
 
 init();
 

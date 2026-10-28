@@ -1,7 +1,7 @@
 /* Données de la maquette D3CO.
    Tout vient du site actuel (d3co.ch), sauf ce qui est marqué « aCompleter ».
    Noms des coloris : descriptifs, à confirmer par D3CO. */
-import { FORMES } from './formes.js';
+import { FORMES } from './formes.js?v=20261028';
 
 export const SITE = {
   tel: '+41 78 668 89 77',

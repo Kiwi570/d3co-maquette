@@ -2,7 +2,7 @@
    WebGL (OGL) avec buse incandescente, couches chaudes qui refroidissent, vue éclatée.
    Repli Canvas 2D quand WebGL n'est pas disponible. */
 import { Renderer, Program, Mesh, Texture, Triangle } from '../vendor/ogl/ogl.js';
-import { webglOk, estCalme, gsap } from './core.js';
+import { webglOk, estCalme, gsap } from './core.js?v=20261028';
 
 const vertex = /* glsl */ `
 attribute vec2 uv;
